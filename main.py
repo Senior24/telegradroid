@@ -11,12 +11,14 @@ from aiogram.types import Message
 from data.config import BOT_TOKEN
 from database.sql import db
 
+from middlewares import update_user
+
 dp = Dispatcher()
 
 
 @dp.message(CommandStart())
 async def command_start_handler(message: Message) -> None:
-    await message.answer("")
+    await message.answer("Hey")
 
 
 @dp.message()
@@ -32,6 +34,8 @@ async def main() -> None:
     bot = Bot(token=BOT_TOKEN, default=default)
 
     await db.create()
+
+    dp.update.middleware(update_user.UpdateUser())
 
     await dp.start_polling(bot)
 

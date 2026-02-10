@@ -1,0 +1,8 @@
+welcome: >
+  Hello, {first_name}!\nWelcome to Telegradroid.
+  This is a universal tool which gathered multiple apps in one place.
+  Add necessary apps for use or remove any app whenever you want
+start: "🔄️ Bot successfully updated"
+
+store: "🛍️ Store"
+settings: "⚙️ Settings"

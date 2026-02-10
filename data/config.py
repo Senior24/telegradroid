@@ -3,6 +3,8 @@ from environs import Env
 env = Env()
 env.read_env()
 
+primary_lang = "en"
+
 BOT_TOKEN = env.str("BOT_TOKEN")
 
 DB_USER = env.str("DB_USER")

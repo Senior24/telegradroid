@@ -1,11 +1,17 @@
-from postgresql import PostgreSQL
+from .postgresql import PostgreSQL
 
 class Database(PostgreSQL):
     async def add_user(self, user_id, first_name, last_name, username):
-        sql = "INSERT INTO users (user_id, first_name, l) VALUES($1, $2, $3) returning *"
-        return await self.execute(sql, user_id, first_name, last_name, username)
+        sql = "INSERT INTO bot.users (user_id, first_name, last_name, username) VALUES($1, $2, $3, $4)"
+        return await self.execute(sql, user_id, first_name, last_name, username, execute=True)
 
-    async def check_user(self):
+    async def update_user(self, user_id, first_name, last_name, username):
+        sql = "UPDATE bot.users SET first_name=$1, last_name=$2, username=$3 WHERE user_id=$4"
+        return await self.execute(sql, first_name, last_name, username, user_id, execute=True)
+
+    async def check_user(self, user_id):
+        sql = "SELECT * FROM bot.users WHERE user_id = $1"
+        return bool(await self.execute(sql, user_id, fetch=True))
 
     async def select_all_users(self):
         sql = "SELECT * FROM Users"

@@ -1,13 +1,46 @@
 from typing import Callable, Dict, Any, Awaitable
 from aiogram import BaseMiddleware
-from aiogram.types import TelegramObject
+from aiogram.types import Update
 
-class SomeMiddleware(BaseMiddleware):
+from database.sql import db
+
+class UpdateUser(BaseMiddleware):
     async def __call__(
         self,
-        handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]],
-        event: TelegramObject,
+        handler: Callable[[Update, Dict[str, Any]], Awaitable[Any]],
+        update: Update,
         data: Dict[str, Any]
     ) -> Any:
-        if event.from_user.id:
-        return await handler(event, data)
+        user_data = next(
+            (
+                obj for obj in (
+                update.message,
+                update.edited_message,
+                update.callback_query,
+                update.inline_query,
+                update.chat_member,
+                update.my_chat_member,
+                update.pre_checkout_query,
+                update.shipping_query,
+            )
+                if obj is not None
+            ),
+            None,
+        )
+
+        user_id = user_data.from_user.id
+        first_name = user_data.from_user.first_name
+        last_name = user_data.from_user.last_name
+        username = user_data.from_user.username
+
+        if not await db.check_user(user_id):
+            await db.add_user(
+                user_id=user_id,
+                first_name=first_name,
+                last_name=last_name,
+                username=username
+            )
+
+        await db.update_user(user_id, first_name, last_name, username)
+
+        return await handler(update, data)
