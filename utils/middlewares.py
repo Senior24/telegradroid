@@ -1,7 +1,9 @@
-from typing import Callable, Dict, Any, Awaitable
 from aiogram import BaseMiddleware
 from aiogram.types import Update
 
+from typing import Callable, Dict, Any, Awaitable
+
+from datetime import datetime
 from database.sql import db
 
 class UpdateUser(BaseMiddleware):
@@ -33,14 +35,18 @@ class UpdateUser(BaseMiddleware):
         last_name = user_data.from_user.last_name
         username = user_data.from_user.username
 
+        if user_id == data['bot'].id:
+            return
+
         if not await db.check_user(user_id):
             await db.add_user(
                 user_id=user_id,
                 first_name=first_name,
                 last_name=last_name,
-                username=username
+                username=username,
+                lang="en"
             )
 
-        await db.update_user(user_id, first_name, last_name, username)
+        await db.update_user(user_id, first_name, last_name, username, datetime.now())
 
         return await handler(update, data)

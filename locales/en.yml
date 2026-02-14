@@ -1,8 +1,13 @@
+name: "🇺🇸 English"
 welcome: >
   Hello, {first_name}!\nWelcome to Telegradroid.
   This is a universal tool which gathered multiple apps in one place.
   Add necessary apps for use or remove any app whenever you want
 start: "🔄️ Bot successfully updated"
+error: "Something went wrong. Try to update bot with /start command"
+
 
 store: "🛍️ Store"
 settings: "⚙️ Settings"
+change_lang: "✏️ Change language"
+calculator: "🧮 Calculator"
