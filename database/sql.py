@@ -33,7 +33,7 @@ class Database(PostgreSQL):
         await self.execute(sql, str(apps), user_id, execute=True)
 
     async def app_thread_id(self, user_id, app):
-        sql = "SELECT data->>'$2' FROM bot.users WHERE user_id = $1"
+        sql = "SELECT (apps->>$2)::BIGINT FROM bot.users WHERE user_id = $1"
         return await self.execute(sql, user_id, app, fetch_val=True)
 
     async def select_all_users(self):

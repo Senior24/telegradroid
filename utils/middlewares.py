@@ -1,5 +1,5 @@
 from aiogram import BaseMiddleware
-from aiogram.types import Update
+from aiogram.types import TelegramObject
 
 from typing import Callable, Dict, Any, Awaitable
 
@@ -9,44 +9,24 @@ from database.sql import db
 class UpdateUser(BaseMiddleware):
     async def __call__(
         self,
-        handler: Callable[[Update, Dict[str, Any]], Awaitable[Any]],
-        update: Update,
+        handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]],
+        event: TelegramObject,
         data: Dict[str, Any]
     ) -> Any:
-        user_data = next(
-            (
-                obj for obj in (
-                update.message,
-                update.edited_message,
-                update.callback_query,
-                update.inline_query,
-                update.chat_member,
-                update.my_chat_member,
-                update.pre_checkout_query,
-                update.shipping_query,
-            )
-                if obj is not None
-            ),
-            None,
-        )
+        user = data['event_from_user']
 
-        user_id = user_data.from_user.id
-        first_name = user_data.from_user.first_name
-        last_name = user_data.from_user.last_name
-        username = user_data.from_user.username
-
-        if user_id == data['bot'].id:
+        if user.id == data['bot'].id:
             return
 
-        if not await db.check_user(user_id):
+        if not await db.check_user(user.id):
             await db.add_user(
-                user_id=user_id,
-                first_name=first_name,
-                last_name=last_name,
-                username=username,
+                user_id=user.id,
+                first_name=user.first_name,
+                last_name=user.last_name,
+                username=user.username,
                 lang="en"
             )
 
-        await db.update_user(user_id, first_name, last_name, username, datetime.now())
+        await db.update_user(user.id, user.first_name, user.last_name, user.username, datetime.now())
 
-        return await handler(update, data)
+        return await handler(event, data)

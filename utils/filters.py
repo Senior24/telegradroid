@@ -1,5 +1,5 @@
 from aiogram.filters import Filter
-from aiogram.types import Message, Update
+from aiogram.types import TelegramObject, Message
 
 from database.sql import db
 from utils.gettext import _
@@ -28,25 +28,14 @@ class App(Filter):
     def __init__(self, app: str) -> None:
         self.app = app
 
-    async def __call__(self, update: Update) -> bool:
-        user_data = next(
-            (
-                obj for obj in (
-                update.message,
-                update.edited_message,
-                update.callback_query,
-                update.inline_query,
-                update.chat_member,
-                update.my_chat_member,
-                update.pre_checkout_query,
-                update.shipping_query,
-            )
-                if obj is not None
-            ),
-            None,
-        )
+    async def __call__(self, event: TelegramObject, event_from_user) -> bool:
+        app_thread_id = await db.app_thread_id(event_from_user.id, self.app)
 
-        thread_id = await db.app_thread_id(user_data.from_user.id, self.app)
-        return thread_id == user_data.message_thread_id
+        if isinstance(event, Message):
+            thread_id = event.message_thread_id
+        else:
+            thread_id = event.message.message_thread_id
 
-
+        if thread_id == app_thread_id:
+            return True
+        return False

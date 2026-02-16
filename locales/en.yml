@@ -4,10 +4,13 @@ welcome: >
   This is a universal tool which gathered multiple apps in one place.
   Add necessary apps for use or remove any app whenever you want
 start: "🔄️ Bot successfully updated"
+choose_app_to_add: "Choose one of the apps to add"
+app_attached_to_chat: "App attached to a new chat. Send /start command to a new chat to setup"
+app_added_already: "You already added this app"
 error: "Something went wrong. Try to update bot with /start command"
-
 
 store: "🛍️ Store"
 settings: "⚙️ Settings"
 change_lang: "✏️ Change language"
 calculator: "🧮 Calculator"
+qr_code: "🔲 QR Code"
