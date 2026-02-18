@@ -28,13 +28,14 @@ class Database(PostgreSQL):
         sql = f"UPDATE bot.users SET apps = coalesce(apps, '{{}}'::jsonb) || jsonb_build_object('{app}', {thread_id}) WHERE user_id = $1"
         await self.execute(sql, user_id, execute=True)
 
-    async def remove_app(self, user_id, *apps):
-        sql = "UPDATE bot.users SET apps = apps - $1 WHERE user_id = $2"
-        await self.execute(sql, str(apps), user_id, execute=True)
+    async def remove_app(self, user_id, app):
+        sql = "UPDATE bot.users SET apps = apps - $2 WHERE user_id = $1"
+        await self.execute(sql, user_id, app, execute=True)
 
     async def app_thread_id(self, user_id, app):
         sql = "SELECT (apps->>$2)::BIGINT FROM bot.users WHERE user_id = $1"
-        return await self.execute(sql, user_id, app, fetch_val=True)
+        result = await self.execute(sql, user_id, app, fetch_val=True)
+        return result if result else -1
 
     async def select_all_users(self):
         sql = "SELECT * FROM Users"

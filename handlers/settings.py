@@ -12,4 +12,5 @@ async def settings(message: Message):
     user_id = message.from_user.id
     lang = await db.lang(user_id)
 
-    await message.answer(_("settings", lang).split()[1])
+    await message.answer("Currently there is only one language available. "
+                         "Therefore, there no options for settings")

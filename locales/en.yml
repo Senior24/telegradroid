@@ -7,10 +7,34 @@ start: "🔄️ Bot successfully updated"
 choose_app_to_add: "Choose one of the apps to add"
 app_attached_to_chat: "App attached to a new chat. Send /start command to a new chat to setup"
 app_added_already: "You already added this app"
+choose_app_to_remove: "Choose one of the apps to remove"
+app_removed: "App removed"
+app_removed_already: "You already removed this app"
 error: "Something went wrong. Try to update bot with /start command"
 
 store: "🛍️ Store"
 settings: "⚙️ Settings"
+remove_apps: "🗑️ Remove apps"
+back: "🔙 Back"
 change_lang: "✏️ Change language"
 calculator: "🧮 Calculator"
 qr_code: "🔲 QR Code"
+handwriting: "🖋 Handwriting"
+word_counter: "🧮 Word Counter"
+weather: "☁️ Weather"
+ai: "🤖 AI"
+
+# Word counter
+word_counter_start: "Send a text to count"
+counted_data: "Words: {words}\nSymbols: {symbols}"
+
+# Handwriting
+handwriting_start: "Send a text to get as a handwritten"
+invalid_symbols: "There are invalid symbols in your text"
+
+# Calculator
+invalid_expression: "Invalid expression"
+
+# AI
+ai_start: "This AI works on Cerebras API. Send a message to get a response"
+ai_error: "Oh, it looks like something went wrong with API. Try to send your message again"
