@@ -4,7 +4,7 @@
 ## Using this bot
 Go to [Telegradroid](https://t.me/TelegradroidBot) and click on the START button
 
-That's it. You all set!
+That's it. Enjoy!
 
 ## Setup
 This setup guide was made for Windows. Some steps may differ if you're using another OS
@@ -55,11 +55,14 @@ CEREBRAS_AI_KEY=
 - Do the same with [this website](https://www.cerebras.ai/)
 - Fill the corresponding variables in `.env` file
 
-### Launching the bot
-- Open the terminal (powershell or cmd) in the project directory and execute the following command:
+### Installing required libraries and launching the bot
+- Open the terminal (powershell or cmd) in project directory and execute the following commands:
+```
+pip install -r requirements.txt
+```
 
 ```
-.\.venv\Scripts\python.exe main.py
+python main.py
 ```
 
 ### Final steps
