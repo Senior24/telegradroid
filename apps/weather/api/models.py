@@ -19,14 +19,13 @@ class Main(BaseModel):
     temp_max: float
     pressure: int
     humidity: int
-    sea_level: int
-    grnd_level: int
-    wind_speed: int
+    sea_level: int | None = None
+    grnd_level: int | None = None
 
 class Wind(BaseModel):
     speed: float
     deg: int
-    gust: float
+    gust: float | None = None
 
 class Clouds(BaseModel):
     all: int

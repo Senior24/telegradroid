@@ -18,10 +18,10 @@ remove_apps: "🗑️ Remove apps"
 back: "🔙 Back"
 change_lang: "✏️ Change language"
 calculator: "🧮 Calculator"
-qr_code: "🔲 QR Code"
-handwriting: "🖋 Handwriting"
-word_counter: "🧮 Word Counter"
-weather: "☁️ Weather"
+qr_code: "✅ QR Code"
+handwriting: "✍️ Handwriting"
+word_counter: "📝 Word Counter"
+weather: "⛅️ Weather"
 ai: "🤖 AI"
 
 # Word counter
@@ -38,3 +38,19 @@ invalid_expression: "Invalid expression"
 # AI
 ai_start: "This AI works on Cerebras API. Send a message to get a response"
 ai_error: "Oh, it looks like something went wrong with API. Try to send your message again"
+
+# Weather
+weather_start: "Send a city name to get a weather data"
+weather_data: |
+  Temperature: {temp}°
+  Feels like: {feels_like}°
+  Min temperature: {temp_min}°
+  Max temperature: {temp_max}°
+  Pressure: {pressure} hPa
+  Humidity: {humidity}%
+
+city_not_found: "City not found"
+
+# QR Code
+qr_code_start: "Send a image with QR code to read the data"
+qr_code_not_found: "QR Code not found"
