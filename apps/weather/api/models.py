@@ -6,11 +6,13 @@ class Coord(BaseModel):
     lon: float
     lat: float
 
+
 class Weather(BaseModel):
     id: int
     main: str
     description: str
     icon: str
+
 
 class Main(BaseModel):
     temp: float
@@ -22,18 +24,22 @@ class Main(BaseModel):
     sea_level: int | None = None
     grnd_level: int | None = None
 
+
 class Wind(BaseModel):
     speed: float
     deg: int
     gust: float | None = None
 
+
 class Clouds(BaseModel):
     all: int
+
 
 class System(BaseModel):
     country: str
     sunrise: int
     sunset: int
+
 
 class WeatherData(BaseModel):
     coord: Coord

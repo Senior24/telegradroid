@@ -8,8 +8,8 @@ from data import config
 
 class PostgreSQL:
 
-    def __init__(self):
-        self.pool: Union[Pool, None] = None
+    def __init__(self, pool: Pool = None):
+        self.pool: Union[Pool, None] = pool
 
     async def create(self):
         self.pool = await asyncpg.create_pool(

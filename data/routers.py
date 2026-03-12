@@ -1,12 +1,13 @@
 import os
 
-from handlers import start, new_topic, store, settings
+from handlers import start, new_topic, store, settings, error
 
 routers_list = [
     start.router,
     new_topic.router,
     store.router,
     settings.router,
+    # error.router,
 ]
 
 for app in os.listdir('apps'):

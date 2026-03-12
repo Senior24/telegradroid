@@ -18,11 +18,13 @@ remove_apps: "🗑️ Remove apps"
 back: "🔙 Back"
 change_lang: "✏️ Change language"
 calculator: "🧮 Calculator"
-qr_code: "✅ QR Code"
 handwriting: "✍️ Handwriting"
 word_counter: "📝 Word Counter"
 weather: "⛅️ Weather"
 ai: "🤖 AI"
+file_link: "📁 File Link"
+channel_manager: "📊 Channel Manager"
+search: "🔎 Search"
 
 # Word counter
 word_counter_start: "Send a text to count"
@@ -50,7 +52,3 @@ weather_data: |
   Humidity: {humidity}%
 
 city_not_found: "City not found"
-
-# QR Code
-qr_code_start: "Send a image with QR code to read the data"
-qr_code_not_found: "QR Code not found"

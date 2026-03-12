@@ -1,4 +1,5 @@
 from aiogram import BaseMiddleware
+from aiogram.enums import ChatType
 from aiogram.types import TelegramObject
 
 from typing import Callable, Dict, Any, Awaitable
@@ -13,6 +14,10 @@ class UpdateUser(BaseMiddleware):
         event: TelegramObject,
         data: Dict[str, Any]
     ) -> Any:
+        event_chat = data.get('event_chat')
+        if not event_chat or event_chat.type != ChatType.PRIVATE:
+            return await handler(event, data)
+
         user = data['event_from_user']
 
         if user.id == data['bot'].id:
