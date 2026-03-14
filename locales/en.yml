@@ -23,32 +23,4 @@ word_counter: "📝 Word Counter"
 weather: "⛅️ Weather"
 ai: "🤖 AI"
 file_link: "📁 File Link"
-channel_manager: "📊 Channel Manager"
 search: "🔎 Search"
-
-# Word counter
-word_counter_start: "Send a text to count"
-counted_data: "Words: {words}\nSymbols: {symbols}"
-
-# Handwriting
-handwriting_start: "Send a text to get as a handwritten"
-invalid_symbols: "There are invalid symbols in your text"
-
-# Calculator
-invalid_expression: "Invalid expression"
-
-# AI
-ai_start: "This AI works on Cerebras API. Send a message to get a response"
-ai_error: "Oh, it looks like something went wrong with API. Try to send your message again"
-
-# Weather
-weather_start: "Send a city name to get a weather data"
-weather_data: |
-  Temperature: {temp}°
-  Feels like: {feels_like}°
-  Min temperature: {temp_min}°
-  Max temperature: {temp_max}°
-  Pressure: {pressure} hPa
-  Humidity: {humidity}%
-
-city_not_found: "City not found"

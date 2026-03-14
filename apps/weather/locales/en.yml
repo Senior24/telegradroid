@@ -1,0 +1,10 @@
+start: "Send a city name to get a weather data"
+data: |
+  Temperature: {temp}°
+  Feels like: {feels_like}°
+  Min temperature: {temp_min}°
+  Max temperature: {temp_max}°
+  Pressure: {pressure} hPa
+  Humidity: {humidity}%
+
+city_not_found: "City not found"

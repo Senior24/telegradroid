@@ -17,5 +17,4 @@ async def get_websites(query: str) -> SearchResponse:
             headers={'Authorization': f'Bearer {HACK_SEARCH_KEY}'}
                                ) as response:
             adapter = TypeAdapter(SearchResponse)
-            print(await response.json())
             return adapter.validate_python(await response.json())

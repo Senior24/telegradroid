@@ -18,10 +18,9 @@ async def search_web(message: Message):
     for number, website in enumerate(data.web.results, start=1):
         results += f"<a href='{website.url}'>{number}. {website.title}</a>\n"
 
-    await message.answer(results, disable_web_page_preview=True, reply_markup=content_list(lang))
+    await message.answer(results, disable_web_page_preview=True)
 
 
 @router.callback_query()
 async def search_content(callback: CallbackQuery):
-
-    await callback.message.answer()
+    pass

@@ -1,0 +1,2 @@
+start: "Send a text to count"
+counted_data: "Words: {words}\nSymbols: {symbols}"

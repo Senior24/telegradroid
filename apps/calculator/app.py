@@ -6,8 +6,9 @@ from aiogram.types import Message, CallbackQuery
 from contextlib import suppress
 
 from database.sql import db
-from utils.gettext import _
 from utils.modified_router import modified_router
+
+from .gettext import _
 
 from .keyboards import default
 

@@ -1,0 +1,2 @@
+start: "This AI works on Cerebras API. Send a message to get a response"
+error: "Oh, it looks like something went wrong with API. Try to send your message again"

@@ -6,15 +6,16 @@ from cerebras.cloud.sdk import Cerebras
 
 from data.config import CEREBRAS_AI_KEY
 from database.sql import db
-from utils.gettext import _
 from utils.modified_router import modified_router
+
+from .gettext import _
 
 router = modified_router("ai")
 
 @router.message(CommandStart())
 async def start(message: Message):
   lang = await db.lang(message.from_user.id)
-  await message.answer(_("ai_start", lang))
+  await message.answer(_("start", lang))
 
 
 @router.message(F.text)
@@ -36,4 +37,4 @@ async def generate_response(message: Message):
 
     await message.answer(completion.choices[0].message.content, parse_mode=ParseMode.MARKDOWN)
   except:
-    await message.answer(_("ai_error", lang))
+    await message.answer(_("error", lang))

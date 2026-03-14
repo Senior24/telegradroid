@@ -1,4 +1,4 @@
 from utils.gettext import _ as t_
 
 def _(key: str, lang: str) -> str:
-    return t_("search_" + key, lang)
+    return t_("calculator_" + key, lang)
